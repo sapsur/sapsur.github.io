@@ -1,0 +1,60 @@
+<form name="form">
+<script>
+    function proses()
+    {
+        var kota = document.form.kota.value;
+        if (kota=="bandung") {
+            if (document.form.kelas[0].checked) var harga = 100000;
+            if (document.form.kelas[1].checked) var harga = 125000;
+            if (document.form.kelas[2].checked) var harga = 150000;}
+        if (kota=="jakarta") {
+            if (document.form.kelas[0].checked) var harga = 150000;
+            if (document.form.kelas[1].checked) var harga = 175000;
+            if (document.form.kelas[2].checked) var harga = 200000;}
+        if (kota=="cirebon") {
+            if (document.form.kelas[0].checked) var harga = 200000;
+            if (document.form.kelas[1].checked) var harga = 250000;
+            if (document.form.kelas[2].checked) var harga = 300000;}
+        
+        var jumlah = document.form.jumlah.value;
+        var total = harga * jumlah;
+        
+            if (total>=400000) {
+                var potongan = 0.1;
+            } else {
+                var potongan = 0;
+            }
+
+        var diskon = total * potongan;
+        var totalharga = total - diskon;
+        document.form.harga.value=harga;
+        document.form.diskon.value=diskon;
+        document.form.totalharga.value=totalharga;
+    }
+</script>
+<html>
+    <center>
+        <h1>PENJUALAN TIKET KERETA API
+            <hr>
+            <table>
+            <tr><td>KOTA TUJUAN<td><select name="kota">
+                <option value="bandung">BANDUNG
+                <option value="jakarta">JAKARTA
+                <option value="cirebon">CIREBON
+            <tr><td>KELAS<td><input type="radio" name="kelas">EKONOMI
+            <tr><td><td><input type="radio" name="kelas">BISNIS
+            <tr><td><td><input type="radio" name="kelas">EKSEKUTIF
+            <tr><td>JUMLAH TIKET<td><input type="text" name="jumlah" size="2">
+            <tr><td colspan="2"><hr>
+            <tr><td>HARGA TIKET<td><input type="text" name="harga" size="10">
+            <tr><td>DISKON 10%<td><input type="text" name="diskon" size="10">
+            <tr><td>TOTAL<td><input type="text" name="totalharga" size="10">
+            <tr><td colspan="2"><font color="red" size="2"><i>*Diskon 10% setiap pembelian lebih dari 400.000</i>
+            </table>
+            <hr>
+            <input type="button" value="Proses" onclick="proses()">
+            <input type="Reset" value="reset">
+        </h1>
+    </center>
+</html>
+</form>
